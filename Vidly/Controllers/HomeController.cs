@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Logging;
 using System.Diagnostics;
 using Vidly.Models;
 using Vidly.ViewModels;
@@ -9,29 +10,41 @@ namespace Vidly.Controllers
     
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private MyDBContext  _context;
+        public HomeController()
         {
-            _logger = logger;
+            _context = new MyDBContext();
         }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public IActionResult Index()
         {
             return View();
         }
-        public  List<Customer> customer = new List<Customer>
-            {
-                new Customer {Name="Abrahama Linkon", Id=1},
-                new Customer {Name="Ben Grey" , Id=2},
-                new Customer {Name="Cella Hook" , Id=3},
-                new Customer {Name = "Dolby Atmos" , Id=4},
+        //public  List<Customer> customer = new List<Customer>
+        //    {
+        //        new Customer {Name="Abrahama Linkon", Id=1},
+        //        new Customer {Name="Ben Grey" , Id=2},
+        //        new Customer {Name="Cella Hook" , Id=3},
+        //        new Customer {Name = "Dolby Atmos" , Id=4},
 
-            };
+        //    };
+       
 
         public IActionResult Customer()
         {
-            
+            var customer = _context.Customers.ToList();
             var viewModel = new CustomerMovieViewModel
             {
                 Customer = customer
@@ -42,8 +55,9 @@ namespace Vidly.Controllers
         }
         public IActionResult CustomerDetails(int id)
         {
+            var customer = _context.Customers.ToList();
             //string s = id.ToString();
-            //var customer = new List<Customer>
+            //var customer = _context.Customers.ToList();
             //{
             //    new Customer {Name="Abrahama Linkon", Id=1},
             //    new Customer {Name="Ben Grey" , Id=2},
