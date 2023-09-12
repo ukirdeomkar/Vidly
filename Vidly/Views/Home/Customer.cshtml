@@ -19,13 +19,18 @@
                     <tr>
                         <!--<th scope="col">Sr No</th>-->
                         <th scope="col">Name</th>
+                        <th scope="col"> Discount Rate </th>
 
                     </tr>
                 </thead>
                 <tbody>
                    @foreach(var customer in Model.Customer)
                     {
-                    <tr><td><a href="/Home/Customer/Details/@customer.Id">@customer.Name</a></td></tr>
+                    <tr>
+                        <td><a href="/Home/Customer/Details/@customer.Id">@customer.Name</a></td>
+                        <td>@customer.MembershipType.DiscountRate%</td>
+                        
+                    </tr>
                     }
                 </tbody>
             </table>

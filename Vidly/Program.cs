@@ -27,14 +27,14 @@ app.MapControllerRoute(
     new {controller = "Home" , action = "CustomerDetails"}
     );
 
-app.MapControllerRoute(
-    "MovieByReleaseDate",
-    "movie/released/{year}/{month}",
-    new { controller = "Movie", action = "ByReleaseDate" },
+//app.MapControllerRoute(
+//    "MovieByReleaseDate",
+//    "movie/released/{year}/{month}",
+//    new { controller = "Movie", action = "ByReleaseDate" },
 
-     //the below validation is not working for .net6 version
-    new { year = "\\d{4}$", month = "\\d{2}$" }
-    ) ;
+//     //the below validation is not working for .net6 version
+//    new { year = "\\d{4}$", month = "\\d{2}$" }
+//    ) ;
 
 app.MapControllerRoute(
     name: "default",

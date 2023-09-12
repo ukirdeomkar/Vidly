@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Logging;
+using System.Data.Entity;
 using System.Diagnostics;
 using Vidly.Models;
 using Vidly.ViewModels;
@@ -44,7 +45,7 @@ namespace Vidly.Controllers
 
         public IActionResult Customer()
         {
-            var customer = _context.Customers.ToList();
+            var customer = _context.Customers.Include(c=>c.MembershipType).ToList();
             var viewModel = new CustomerMovieViewModel
             {
                 Customer = customer

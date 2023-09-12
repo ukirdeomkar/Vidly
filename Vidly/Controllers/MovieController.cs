@@ -34,9 +34,9 @@ namespace Vidly.Controllers
             //return  RedirectToAction("Index" , "Home" , new {name="avenger",sortBy="part"});
         }
 
-        // Route paramter validation still not working
-       //[Route("movie/released/{{year}}/{{month:regex(\\d{2}$):range(1,12)}")]
-
+        //Route paramter validation still not working
+        [Route("movie/released/{{year}}/{{month:regex(\\d{2}$):range(1,12)}")]
+        //[Route("movie/released/{year}/{month}")]
         public IActionResult ByReleaseDate(int year , int month)
         {
 
