@@ -20,6 +20,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
+app.MapControllerRoute(
+    "CustomerDetails",
+    "/Home/Customer/Details/{id}",
+    new {controller = "Home" , action = "CustomerDetails"}
+    );
+
 app.MapControllerRoute(
     "MovieByReleaseDate",
     "movie/released/{year}/{month}",

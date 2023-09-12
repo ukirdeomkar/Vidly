@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model Vidly.ViewModels.CustomerMovieViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Customers List</h1>
+
+            @if(Model.Customer.Count == 0)
+            {
+                <text>We Dont Have Customer's Yet</text>
+            }
+            else
+            {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <!--<th scope="col">Sr No</th>-->
+                        <th scope="col">Name</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach(var customer in Model.Customer)
+                    {
+                    <tr><td><a href="/Home/Customer/Details/@customer.Id">@customer.Name</a></td></tr>
+                    }
+                </tbody>
+            </table>
+            }
+                
+                
+              
+            
+         
+        
+</div>
