@@ -56,7 +56,7 @@ namespace Vidly.Controllers
         }
         public IActionResult CustomerDetails(int id)
         {
-            var customer = _context.Customers.ToList();
+            var customer = _context.Customers.Include(c => c.MembershipType).ToList();
             //string s = id.ToString();
             //var customer = _context.Customers.ToList();
             //{

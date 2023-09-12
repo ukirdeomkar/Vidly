@@ -4,9 +4,19 @@
 }
 @model Vidly.ViewModels.CustomerMovieViewModel;
 
-<div class="text-center">
+<div>
     @foreach(var customer in Model.Customer)
     {
         <h2>@customer.Name </h2>
+        <ul>
+           
+        @if(customer.BirthDate != null)
+        {
+            DateTime temp = @customer.BirthDate ?? DateTime.MinValue;
+            <li><text>Birthdate : @temp.ToString("dd/MM/yyyy") </text></li>
+        }
+
+            <li><p>Subscription : @customer.MembershipType.Name </p></li>
+        </ul>
     }
 </div>
