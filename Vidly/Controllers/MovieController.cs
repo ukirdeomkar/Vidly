@@ -35,8 +35,8 @@ namespace Vidly.Controllers
         }
 
         //Route paramter validation still not working
-        [Route("movie/released/{{year}}/{{month:regex(\\d{2}$):range(1,12)}")]
-        //[Route("movie/released/{year}/{month}")]
+        //[Route("movie/released/{{year}}/{{month:regex(\\d{2}$):range(1,12)}")]
+        [Route("movie/released/{year}/{month}")]
         public IActionResult ByReleaseDate(int year , int month)
         {
 
