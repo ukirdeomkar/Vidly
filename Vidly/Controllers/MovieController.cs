@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -10,24 +12,37 @@ namespace Vidly.Controllers
         {
 
             var movie = new Movie() { 
-                Name = "move",
+                Name = "Intestellar",
                 Id = 1,
             };
+            var customers = new List<Customer>
+            {
+                new Customer {Name ="customer 1"},
+                new Customer {Name ="customer 2"},
 
-            return View(movie);
+            };
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customer = customers
+            };     
+            
+
+            return View(viewModel);
             // return Content("Hello !");
             //return new NotFoundResult();
             //return  RedirectToAction("Index" , "Home" , new {name="avenger",sortBy="part"});
         }
 
         // Route paramter validation still not working
-        [Route("movie/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
+       //[Route("movie/released/{{year}}/{{month:regex(\\d{2}$):range(1,12)}")]
 
         public IActionResult ByReleaseDate(int year , int month)
         {
 
-
+            //return ControllerContext.MyDisplayRouteInfo();
             return Content(year + "/"+month);
+
         }
         //public IActionResult Index(int? pageIndex , string sortBy)
         //{
@@ -45,6 +60,6 @@ namespace Vidly.Controllers
         //}
 
 
-       
+
     }
 }
