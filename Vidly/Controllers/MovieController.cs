@@ -50,7 +50,6 @@ namespace Vidly.Controllers
         public IActionResult ByReleaseDate(int year , int month)
         {
 
-            //return ControllerContext.MyDisplayRouteInfo();
             return Content(year + "/"+month);
 
         }
