@@ -86,6 +86,7 @@ namespace Vidly.Controllers
         }
         public IActionResult Save(Movie movie)
         {
+            movie.DateAdded = DateTime.Now;
             if (movie.Id == 0)
                 _context.Movies.Add(movie);
             else
@@ -98,7 +99,15 @@ namespace Vidly.Controllers
                 movieInDb.NumberOfStocks = movie.NumberOfStocks;
 
             }
-            _context.SaveChanges();
+            //try
+            //{
+                _context.SaveChanges();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex);
+            //}
+            
             return RedirectToAction("Index", "Movie");
 
         }

@@ -24,16 +24,24 @@ else
             @Html.LabelFor(c=>c.Movie.ReleaseDate)
             @Html.TextBoxFor(c=>c.Movie.ReleaseDate, "{0: d MMM yyyy}" , new {@class = "form-control"})
         </div>
-        <div class="form-group my-2">
-            @Html.LabelFor(c=>c.Movie.DateAdded)
-            @Html.TextBoxFor(c=>c.Movie.DateAdded, "{0: d MMM yyyy}" , new {@class = "form-control"})
-        </div>
+        @*
+    <div class="form-group my-2">
+    @Html.LabelFor(c=>c.Movie.DateAdded)
+    @Html.TextBoxFor(c=>c.Movie.DateAdded, "{0: d MMM yyyy}" , new {@class = "form-control"})
+    </div>*@
         
-           @*
-               Having Issue to add datetime.now for for directly 
+       
+        
+           
+               @*
+                   Having Issue to add datetime.now  for directly adding datetime
+    
 
-                @Html.HiddenFor(c=>c.Movie.DateAdded, new {Value = DateTime.Now , @class= "form-control"} )
-           *@
+               *@
+        @Html.HiddenFor(c=>c.Movie.DateAdded, new {Value = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss") , @class= "form-control"} )
+        
+
+           
             
         
 
