@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "New Customer Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model Vidly.ViewModels.MovieFormViewModel
+
+@if (Model.Movie == null)
+{
+     <h2>Add a new movie</h2>
+}
+else
+{
+     <h2>Edit Movie</h2>
+}
+@using (Html.BeginForm("Save", "Movie"))
+{
+    <div class="container my-2">
+        <div class="form-group my-2">
+            @Html.LabelFor(c=>c.Movie.Name)
+            @Html.TextBoxFor(c=>c.Movie.Name , new {@class = "form-control"})
+        </div>
+        <div class="form-group my-2">
+            @Html.LabelFor(c=>c.Movie.ReleaseDate)
+            @Html.TextBoxFor(c=>c.Movie.ReleaseDate, "{0: d MMM yyyy}" , new {@class = "form-control"})
+        </div>
+        <div class="form-group my-2">
+            @Html.LabelFor(c=>c.Movie.DateAdded)
+            @Html.TextBoxFor(c=>c.Movie.DateAdded, "{0: d MMM yyyy}" , new {@class = "form-control"})
+        </div>
+        
+           @*
+               Having Issue to add datetime.now for for directly 
+
+                @Html.HiddenFor(c=>c.Movie.DateAdded, new {Value = DateTime.Now , @class= "form-control"} )
+           *@
+            
+        
+
+        <div class="form-group my-2">
+            @Html.LabelFor(c=>c.Movie.GenreId)
+   
+            @Html.DropDownListFor(c=>c.Movie.GenreId , new SelectList(Model.MovieGenre , "Id" , "Name"), "Select Movie Genre" , new {@class = "form-control"})
+        </div>
+        <div class="form-group my-2">
+            @Html.LabelFor(c=>c.Movie.NumberOfStocks  )
+            @Html.TextBoxFor(c=>c.Movie.NumberOfStocks , new {@class = "form-control"})
+        </div>
+    </div>
+  
+    @Html.HiddenFor(c=>c.Movie.Id)
+    <button type="submit" class="btn btn-primary mx-3">Save</button>
+
+}

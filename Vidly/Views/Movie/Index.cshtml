@@ -4,6 +4,7 @@
 @model Vidly.ViewModels.CustomerMovieViewModel
 <div class="text-center">
     <h1 class="display-4">Movies List</h1>
+    @Html.ActionLink("Add New Movie"  ,"New","Movie",new {} ,new {@class="btn btn-primary my-2 mb-2"})
     @if (Model.Movie.Count == 0)
     {
         <text>No Movies Currently Available </text>
@@ -24,7 +25,7 @@
                 @foreach (var movie in Model.Movie)
                 {
                     <tr>
-                        <td><a href="/Movie/Details/@movie.Id">@movie.Name</a></td>
+                        <td>@Html.ActionLink(movie.Name , "Edit" ,"Movie" , new {id=movie.Id})</td>
                         <td>@movie.Genre.Name</td>
                     </tr>
                 }
