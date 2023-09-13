@@ -21,11 +21,16 @@ app.UseAuthorization();
 app.MapControllers();
 
 
-app.MapControllerRoute(
-    "CustomerDetails",
-    "/Home/Customer/Details/{id}",
-    new {controller = "Home" , action = "CustomerDetails"}
-    );
+//app.MapControllerRoute(
+//    "CustomerDetails",
+//    "/Home/Customer/Details/{id}",
+//    new {controller = "Home" , action = "CustomerDetails"}
+//    );
+//app.MapControllerRoute(
+//    "MovieDetails",
+//    "Movie/Details/{id}",
+//    new { controller = "Home", action = "MovieDetails" }
+//    );
 
 //app.MapControllerRoute(
 //    "MovieByReleaseDate",

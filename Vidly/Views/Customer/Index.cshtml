@@ -27,7 +27,7 @@
                    @foreach(var customer in Model.Customer)
                     {
                     <tr>
-                        <td><a href="/Home/Customer/Details/@customer.Id">@customer.Name</a></td>
+                        <td>@Html.ActionLink(customer.Name , "Details","Customer" ,new {id=customer.Id})</td>
                         <td>@string.Format("{0}{1}",char.ToUpper(customer.MembershipType.Name[0]) ,customer.MembershipType.Name.Substring(1))
                         
                     </tr>
