@@ -6,7 +6,7 @@
 @model Vidly.ViewModels.NewCustomeViewModel
 
 <h2>New Customer Form</h2>
-@using (Html.BeginForm("Save", "Customer"))
+@using (Html.BeginForm("Save", "Customer" , new {id = "customerForm"}))
 {
     @Html.ValidationSummary()
     <div class="container my-2">
@@ -34,6 +34,8 @@
         </div>
     </div>
     @Html.HiddenFor(c=>c.Customer.Id)
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary mx-3">Save</button>
 
 }
+
