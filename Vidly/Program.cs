@@ -1,9 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
-
+using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddFluentValidation(x =>
+{
+    x.ImplicitlyValidateChildProperties = true;
+    x.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+
+});
+
 
 var app = builder.Build();
 

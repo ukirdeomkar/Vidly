@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using System.Data.Entity;
 using System.Net;
+using Vidly.Dtos;
 using Vidly.Models;
 
 namespace Vidly.Controllers.Api
@@ -12,17 +14,23 @@ namespace Vidly.Controllers.Api
     public class CustomerController : ControllerBase
     {
         private MyDBContext _context;
-
+        private readonly IMapper _mapper;
 
         // Get /api/customer
-        public CustomerController()
+        public CustomerController(IMapper mapper)
         {
             _context = new MyDBContext();
+            _mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers()
         {
-            return _context.Customers.ToList();
+            var customer = _context.Customers.ToList();
+            // return _context.Customers.ToList();
+            // return customer.Select(customer => _mapper.Map<CustomerDto>(customer));
+            var customers = _context.Customers.ToList();
+            var customerDtos = customers.Select(customer => _mapper.Map<CustomerDto>(customer));
+            return customerDtos;
         }
 
         //Get /api/customer/1
@@ -45,9 +53,15 @@ namespace Vidly.Controllers.Api
         [HttpPost]
         public  Customer CreateCustomer(Customer customer)
         {
-            if(!ModelState.IsValid)
+            //if (ModelState.ContainsKey("MembershipType"))
+            //{
+            //    ModelState["MembershipType"].Errors.Clear();
+            //}
+            ModelState.Clear();
+            if (!ModelState.IsValid)
             {
                 Console.WriteLine("Bad Request");
+                //return BadRequest();
             }
             _context.Customers.Add(customer);
             _context.SaveChanges();

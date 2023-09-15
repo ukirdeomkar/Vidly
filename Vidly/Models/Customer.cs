@@ -8,8 +8,7 @@ namespace Vidly.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(255)]
+
         [Display(Name = "Customer Name")]
 
         public string Name { get; set; }
@@ -23,11 +22,11 @@ namespace Vidly.Models
 
         
         [Display(Name = "Membership Type")]
-        [Required(ErrorMessage = "Please select a valid Membership Type.")]
+
         public int MembershipTypeId { get; set; }
 
         [Display(Name = "Date Of Birth")]
-        [Class18YearsIfMember]
+        //[Class18YearsIfMember]
         public DateTime? BirthDate { get; set; }
 
     }
