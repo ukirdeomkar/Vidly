@@ -8,8 +8,8 @@
         public byte DiscountRate { get; set; }
         public string Name { get; set; }
 
-        public static readonly byte Unknown = 0;
-        public static readonly byte PayAsYouGo = 1;
+        public static readonly int Unknown = 1;
+        public static readonly int PayAsYouGo = 2;
 
     }
 }

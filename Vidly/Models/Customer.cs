@@ -8,13 +8,13 @@ namespace Vidly.Models
     {
         public int Id { get; set; }
 
-        //[Required]
-        //[MaxLength(255)]
-        //[Display(Name = "Customer Name")]
+        [Required]
+        [MaxLength(255)]
+        [Display(Name = "Customer Name")]
 
         public string Name { get; set; }
 
-        //[Display(Name = "Subscribe to Newsletter")]
+        [Display(Name = "Subscribe to Newsletter")]
         public bool IsSubscribedToNewsLetter { get; set; }
 
 
@@ -22,12 +22,12 @@ namespace Vidly.Models
         public MembershipType MembershipType { get; set; }
 
         
-        //[Display(Name = "Membership Type")]
-        //[Required(ErrorMessage = "Please select a valid Membership Type.")]
+        [Display(Name = "Membership Type")]
+        [Required(ErrorMessage = "Please select a valid Membership Type.")]
         public int MembershipTypeId { get; set; }
 
-        //[Display(Name = "Date Of Birth")]
-        //[Class18YearsIfMember]
+        [Display(Name = "Date Of Birth")]
+        [Class18YearsIfMember]
         public DateTime? BirthDate { get; set; }
 
     }

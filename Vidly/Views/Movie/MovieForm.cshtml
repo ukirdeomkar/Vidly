@@ -15,14 +15,18 @@ else
 }
 @using (Html.BeginForm("Save", "Movie"))
 {
+    @Html.ValidationSummary()
     <div class="container my-2">
         <div class="form-group my-2">
             @Html.LabelFor(c=>c.Movie.Name)
             @Html.TextBoxFor(c=>c.Movie.Name , new {@class = "form-control"})
+            @Html.ValidationMessageFor(c=>c.Movie.Name)
         </div>
         <div class="form-group my-2">
             @Html.LabelFor(c=>c.Movie.ReleaseDate)
             @Html.TextBoxFor(c=>c.Movie.ReleaseDate, "{0: d MMM yyyy}" , new {@class = "form-control"})
+            @Html.ValidationMessageFor(c=>c.Movie.ReleaseDate)
+
         </div>
         @*
     <div class="form-group my-2">
@@ -49,10 +53,12 @@ else
             @Html.LabelFor(c=>c.Movie.GenreId)
    
             @Html.DropDownListFor(c=>c.Movie.GenreId , new SelectList(Model.MovieGenre , "Id" , "Name"), "Select Movie Genre" , new {@class = "form-control"})
+            @Html.ValidationMessageFor(c=>c.Movie.GenreId)      
         </div>
         <div class="form-group my-2">
             @Html.LabelFor(c=>c.Movie.NumberOfStocks  )
             @Html.TextBoxFor(c=>c.Movie.NumberOfStocks , new {@class = "form-control"})
+            @Html.ValidationMessageFor(c=>c.Movie.NumberOfStocks)
         </div>
     </div>
   
