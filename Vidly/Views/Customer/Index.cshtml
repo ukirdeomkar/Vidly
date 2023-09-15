@@ -27,8 +27,9 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $("#customers").DataTable({
+            var table = $("#customers").DataTable({
                 ajax: {
+
                     url: "/api/customer",
                     dataSrc: "" // Assuming your data is directly an array, set dataSrc to an empty string.
                 },
@@ -41,7 +42,10 @@
                         }
                     },
                     {
-                        data: "name"
+                        data: "name",
+                        render: function(data, type, customer) {
+                            return customer.membershipType.name
+                        }
                     },
                     {
                         data: "id",
@@ -64,7 +68,9 @@
                     method : "DELETE",
                     success : function(){
                         console.log("Succesfully Deleted")
-                        button.parents("tr").remove();
+                        table.row(button.parents("tr")).remove().draw(); 
+                        
+                        
 
                        
 

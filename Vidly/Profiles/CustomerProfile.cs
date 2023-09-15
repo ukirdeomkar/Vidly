@@ -8,6 +8,7 @@ namespace Vidly.Profiles
     {
         public CustomerProfile() { 
         CreateMap<Customer, CustomerDto>();
+        CreateMap<MembershipType, MembershipTypeDto>();
         }
     }
 }
