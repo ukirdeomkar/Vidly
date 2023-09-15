@@ -19,14 +19,7 @@ namespace Vidly.Controllers
         }
         public IActionResult Index()
         {
-            var customer = _context.Customers.Include(c => c.MembershipType).ToList();
-            var viewModel = new CustomerMovieViewModel
-            {
-                Customer = customer
-            };
-
-
-            return View(viewModel);
+            return View();
         }
         public IActionResult Details(int id)
         {
